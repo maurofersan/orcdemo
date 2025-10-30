@@ -1,0 +1,29 @@
+<div class="btn-group" dropdown placement="bottom center">
+  <mat-select placeholder="Card Type" class="mat-select-idtype"  [(ngModel)]="context_menu_helper.card_type" (selectionChange)="change()" disableOptionCentering>
+    <mat-option>
+      <input matInput type="text" (keyup)="onKey($event)" (click)="onClick($event)" placeholder="Search Document">
+    </mat-option>
+    <ng-container *ngFor="let idtype of selected_types">
+      <mat-option class="mat-id-option-{{idtype.name}}"  *ngIf="idtype.visible" [value]="idtype.document">
+        {{idtype.name}}
+      </mat-option>
+    </ng-container>
+  </mat-select>
+</div>
+<style>
+  .mat-select-panel {
+    position: relative; /* Ensure the dropdown panel is positioned relatively */
+  }
+
+  .fixed-option {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: white; /* Or match the dropdown background color */
+    z-index: 2; /* Ensure it's above other options */
+  }
+
+  .scrollable-options {
+    margin-top: 48px; /* Adjust based on the height of your fixed option */
+  }
+</style>

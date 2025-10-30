@@ -1,0 +1,17 @@
+.menu-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+  align-items: flex-start;
+}
+
+.menu-radio-button {
+  margin: 2px;
+}
+
+.menu-checkbox-button {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+  align-items: flex-start;
+}

@@ -1,0 +1,19 @@
+.face-container {
+  padding: 5px;
+}
+
+.match-flex-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+}
+
+.match-flex-item {
+  padding: 3px;
+}
+
+.match-img {
+  border-radius: 50%;
+  width: 75px;
+  height: 95px;
+}

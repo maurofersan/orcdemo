@@ -1,0 +1,21 @@
+.app_finger_selection_container {
+  justify-content: center;
+}
+.finger_selection  .container{
+
+  padding: 10px;
+
+}
+.btn-card-face {
+  background-color: white !important;
+  color: black !important;
+  border: gray 3px solid;
+  height: 60px;
+  vertical-align: center;
+}
+
+.btn-card-face.active {
+  background-color: white !important;
+  color: black !important;
+  border: #008bff 3px solid !important;
+}

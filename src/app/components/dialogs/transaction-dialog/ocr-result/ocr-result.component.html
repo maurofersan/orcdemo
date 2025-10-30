@@ -1,0 +1,103 @@
+<div class="ocr-result-container" style="overflow: scroll">
+  <table class="table table-striped" style="font-size: 12px">
+    <tr *ngIf="txnInput.card_front_fields">
+      <td><h5>Card Front</h5></td>
+    </tr>
+    <tr *ngFor="let item2 of txnInput.card_front_fields | keyvalue; index as i">
+      <td>{{item2.key}}</td>
+      <ng-container *ngIf="(item2.value | typeof) === 'string' && item2.value !== '' then stringItem else arrayItem"></ng-container>
+      <ng-template #stringItem>
+        <td>{{item2.value}}</td>
+      </ng-template>
+      <ng-template #arrayItem>
+        <ng-container *ngIf="(item2.value | instanceof:Array) && (item2.value | typeof) === 'object'; then arrayItem2 else objectItem"></ng-container>
+      </ng-template>
+
+      <ng-template #arrayItem2>
+        <td>
+          <div  *ngFor="let item3 of item2.value | keyvalue; index as j">
+            <h4>{{j + 1}}</h4>
+            <table  class="table table-striped" style="width: 120px;margin-bottom: 60px">
+              <tr *ngFor="let item4 of item3.value | keyvalue; index as k">
+                <td>{{item4.key}}</td>
+                <td>{{item4.value}}</td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </ng-template>
+      <ng-template #objectItem>
+        <td>
+          <table class="table table-striped" style="width: 60px">
+            <tr *ngFor="let item4 of item2.value | keyvalue;">
+              <td>{{item4.key}}</td>
+              <td>{{item4.value}}</td>
+            </tr>
+          </table>
+        </td>
+      </ng-template>
+
+      <ng-template>
+
+      </ng-template>
+
+    </tr>
+    <tr *ngIf="txnInput.card_front_valid">
+      <td>Front HasQuality</td>
+      <td>{{txnInput.card_front_valid}}</td>
+    </tr>
+
+    <tr *ngIf="txnInput.card_back_fields">
+      <td><h5>Card Back</h5></td>
+    </tr>
+    <tr *ngFor="let item2 of txnInput.card_back_fields | keyvalue; index as i">
+      <td>{{item2.key}}</td>
+      <td *ngIf="(item2.value | typeof) === 'string' && item2.value !== '' ">{{item2.value}}</td>
+    </tr>
+    <tr *ngIf="txnInput.card_back_valid">
+      <td>Back HasQuality</td>
+      <td>{{txnInput.card_back_valid}}</td>
+    </tr>
+  </table>
+
+  <div>
+    <div *ngIf="txnInput.card_front_barcodes">
+      <h5 style="padding-left: 0.75rem">Barcode Front</h5>
+      <app-barcode *ngFor="let item2 of txnInput.card_front_barcodes | keyvalue; index as i" [barcode_key]="item2.key" [barcode_value]="item2.value"></app-barcode>
+    </div>
+
+    <div *ngIf="txnInput.card_back_barcodes">
+      <h5 style="padding-left: 0.75rem">Barcode Back</h5>
+      <app-barcode *ngFor="let item2 of txnInput.card_back_barcodes | keyvalue; index as i" [barcode_key]="item2.key" [barcode_value]="item2.value"></app-barcode>
+    </div>
+  </div>
+
+  <div>
+    <div *ngIf="txnInput.card_data_validation">
+      <h5 style="padding-left: 0.75rem">Data Validation</h5>
+      <app-validation *ngFor="let item2 of txnInput.card_data_validation | keyvalue; index as i" [validation_key]="item2.key" [validation_value]="item2.value"></app-validation>
+    </div>
+    <div *ngIf="txnInput.card_subtype">
+        <span style="font-size: 15px">Subtype: {{txnInput.card_subtype}}</span>
+    </div>
+    <div *ngIf="txnInput.poa_type">
+        <span style="font-size: 15px">PoA Type: {{txnInput.poa_type}}</span>
+    </div>
+    <div *ngIf="txnInput.integrity_check_error">
+      <span style="font-size: 15px">Integrity Check Error: {{txnInput.integrity_check_error}}</span>
+    </div>
+    <div class="txn-op-error-str" *ngIf="txnInput.error_str">
+      <span style="font-size: 15px">Error: {{txnInput.error_str}}</span>
+    </div>
+  </div>
+
+
+  <div class="ocr-result-image-grid">
+      <div class="ocr-result-image-item">
+        <img src="{{txnInput.card_front}}" alt="" style="width: 90%;" (click)="showLarge(txnInput.card_front)">
+      </div>
+      <div class="ocr-result-image-item">
+        <img src="{{txnInput.card_back}}" alt="" style="width: 90%;" (click)="showLarge(txnInput.card_back)">
+      </div>
+  </div>
+</div>

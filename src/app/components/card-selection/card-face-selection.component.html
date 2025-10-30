@@ -1,0 +1,19 @@
+<div class="app_finger_selection_container">
+  <div class="finger_selection">
+    <div class="container">
+      <div class="row" style="text-align: center">
+
+        <div class="col" *ngFor="let card of card_faces">
+          <section class="example-section">
+            <mat-checkbox class="example-margin" [(ngModel)]="card.selected" [checked]="card.selected" [disabled]="card.disabled" (click)="updateSelection()">{{card.label}}</mat-checkbox>
+          </section>
+        </div>
+
+      </div>
+      <div style="text-align: center; padding-top: 10px">
+        <p style="font-size: large; color: #1A2846; font-weight: 450;">SELECT CARD</p>
+        <app-id-type></app-id-type>
+      </div>
+    </div>
+  </div>
+</div>

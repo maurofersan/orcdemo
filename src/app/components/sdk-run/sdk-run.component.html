@@ -1,0 +1,22 @@
+<div class="use-case-label"></div>
+<div class="run-section">
+  <div class="flex-container">
+    <!-- <button  class="btn btn-primary" style="text-align: center; width: 100%; margin: 0 5% 0 5%; font-size: 25px" (click)="triggerCapture()" [disabled]="disabled">Capture</button> -->
+    <button class="capture-btn" style="margin-top: 10px;" (click)="triggerCamera()" [disabled]="disabled">
+      <img [src]="cam_image" alt="Capture Icon" height="80" width="80" style="padding: 6px;" />
+      <p class="capture-text">CAMERA</p>
+    </button>
+    <button class="gallery-btn" style="margin-top: 10px;" (click)="triggerGallery()" [disabled]="disabled">
+      <img [src]="gal_image" alt="Capture Icon" height="80" width="80" style="padding: 6px;" />
+      <p class="capture-text">GALLERY</p>
+    </button>
+  </div>
+  <div style="margin-top: 20px"></div>
+  <div style="align-content: center; padding-top: 20px;padding-left: 25%">
+    <ol type="1">
+      <li>Capture front of Card</li>
+      <li>Capture back of Card</li>
+      <li>Summary</li>
+    </ol>
+  </div>
+</div>

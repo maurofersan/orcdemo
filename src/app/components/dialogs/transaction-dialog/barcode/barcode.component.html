@@ -1,0 +1,12 @@
+<div>
+  <table class="table table-striped" style="font-size: 12px">
+    <tr>
+      <td>Index</td>
+      <td>{{barcode_key}}</td>
+    </tr>
+    <tr *ngFor="let item2 of barcode_value | keyvalue; index as i">
+      <td>{{item2.key}}</td>
+      <td style="word-break: break-all">{{item2.value}}</td>
+    </tr>
+  </table>
+</div>

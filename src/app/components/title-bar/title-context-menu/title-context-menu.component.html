@@ -1,0 +1,97 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" class="mat-trigger-menu" aria-label="Identy titlebar">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item (click) = "$event.stopPropagation()">
+    <mat-checkbox class="title-checkbox-skipDevice" style="width: 100%" [(ngModel)]="this.context_menu_helper.skipSupportCheck">
+      Skip Device Check
+    </mat-checkbox>
+  </button>
+  <!-- <button mat-menu-item (click) = "$event.stopPropagation()">
+    <mat-checkbox class="title-checkbox-gallery" style="width: 100%" [(ngModel)]="this.context_menu_helper.fileSelection">
+      Gallery Select
+    </mat-checkbox>
+  </button> -->
+  <button mat-menu-item (click) = "$event.stopPropagation()">
+    <mat-checkbox class="title-checkbox-integrity" style="width: 100%" [(ngModel)]="context_menu_helper.integrityCheck">
+      Integrity Check
+    </mat-checkbox>
+  </button>
+  <button mat-menu-item (click) = "$event.stopPropagation()">
+    <mat-checkbox class="title-checkbox-barcode" style="width: 100%" [(ngModel)]="context_menu_helper.barcodeCheck">
+      Barcode Check
+    </mat-checkbox>
+  </button>
+  <button mat-menu-item (click) = "$event.stopPropagation()">
+    <mat-checkbox class="title-checkbox-flash" style="width: 100%" [(ngModel)]="context_menu_helper.useFlash">
+      Use flash
+    </mat-checkbox>
+  </button>
+  <button mat-menu-item (click) = "$event.stopPropagation()">
+    <mat-checkbox class="title-checkbox-uploads" style="width: 100%" [(ngModel)]="context_menu_helper.allowUploads">
+      Allow Uploads
+    </mat-checkbox>
+  </button>
+  <button mat-menu-item (click) = "$event.stopPropagation()">
+    <mat-form-field class="example-form-field">
+      <mat-label>Max Attempts</mat-label>
+      <input matInput type="text" [(ngModel)]="this.context_menu_helper.maxNumberAttempts">
+    </mat-form-field>
+  </button>
+  <button mat-menu-item (click) = "$event.stopPropagation()">
+    <mat-checkbox class="title-checkbox-training" style="width: 100%" [(ngModel)]="context_menu_helper.showCaptureTraining">
+      Show Training
+    </mat-checkbox>
+  </button>
+  <mat-accordion>
+    <mat-expansion-panel   [expanded]="step === 1" (opened)="setStep(1)" (click) = "$event.stopPropagation()">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Templates
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-checkbox class="menu-checkbox-button" *ngFor="let template of templates" [(ngModel)]="template.selected" (click)="update()">
+        {{template.name}}
+      </mat-checkbox>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" (click) = "$event.stopPropagation()" class="expansion-dropdown-localization">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Localization
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-radio-group
+        aria-labelledby="menu-radio-group-label"
+        class="menu-radio-group"
+        [(ngModel)]="context_menu_helper.localization">
+        <mat-radio-button class="menu-radio-button mat-radio-localization-{{localization.name.toLocaleLowerCase()}}" *ngFor="let localization of localizations" [value]="localization">
+          {{localization.name}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" (click) = "$event.stopPropagation()" class="expansion-dropdown-timeout">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Timeout
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-select [(value)]="context_menu_helper.timeout" placeholder="Timeout" class="dropdown-timeout-select">
+        <mat-option *ngFor="let timeout of timeouts" [value]="timeout" class="dropdown-timeout-select-option-{{timeout}}">{{timeout}}</mat-option>
+      </mat-select>
+    </mat-expansion-panel>
+    <mat-expansion-panel   [expanded]="step === 4" (opened)="setStep(4)" (click) = "$event.stopPropagation()">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Mandatory Fields
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-checkbox class="menu-checkbox-button" *ngFor="let field of fields" [(ngModel)]="field.selected" (click)="update()">
+        {{field.name}}
+      </mat-checkbox>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="versions-region">
+    <div style="padding: 3px">Client Version: {{this.client_version}}</div>
+  </div>
+</mat-menu>
+

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+}
+
+.column {
+  padding: 10px;
+}
+
+.first-column {
+  width: 25%;
+}
+
+.second-column {
+  width: 75%;
+}
+
+.row {
+  margin: 5px;
+  padding: 10px;
+}
+
+img {
+  display: block;
+  margin: auto;
+}

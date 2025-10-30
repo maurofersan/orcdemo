@@ -1,0 +1,27 @@
+<div class="modal-body" style="padding: 0 !important;">
+  <div class="txn-dialog-container fill">
+    <div class="txn-header">
+       <div class="txn-flex-grid">
+         <div class="txn-flex-item" style="text-align: center; font-size: 30px">
+           <i class="fa {{this.txn_icon}} " [ngStyle]="{'color': this.txn_icon_color}"></i>
+         </div>
+         <div class="txn-flex-item" style="align-self: center;color: black; font-weight: bold">
+           <span>{{description}}</span>
+         </div>
+       </div>
+    </div>
+    <div class="txn-matcher-item"  *ngIf="extracted_face">
+      <app-face-match extracted="{{extracted_face}}" ></app-face-match>
+    </div>
+    <div class="txn-ocr-results">
+      <app-ocr-result [txnInput]="txnInput"></app-ocr-result>
+    </div>
+  </div>
+</div>
+<div class="modal-footer" style="padding: 0; border: none">
+  <div class="txn-buttons txn-result-item" style="z-index: 2; text-align: center; width: 100%;padding: 10%">
+    <button class="btn btn-md btn-primary btn-close btn-new" (click)="onCloseClicked()">{{closeButtonlabel}}</button>
+    <button class="btn btn-md btn-primary btn-close btn-new" (click)="onDebugClicked()" *ngIf="this.ocr_output">Debug</button>
+    <button class="btn btn-md btn-primary btn-close btn-santander btn-new" (click)="onRetryClicked()" *ngIf="retry">Retry</button>
+  </div>
+</div>

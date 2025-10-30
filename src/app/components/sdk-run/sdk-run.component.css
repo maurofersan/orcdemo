@@ -1,0 +1,29 @@
+.use-case-label {
+  text-align: center;
+  text-transform: capitalize;
+
+  font-size: 20px;
+}
+
+.capture-btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+.gallery-btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+.capture-text {
+  font-size: 16px;
+  color: #1A2846;
+  font-weight: 500;
+  margin: 4px 0 0 0;
+}

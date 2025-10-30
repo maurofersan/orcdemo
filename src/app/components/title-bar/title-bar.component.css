@@ -1,0 +1,20 @@
+.app_ui_titlebar {
+  padding: 15px 5px 15px 5px;
+  margin-bottom: 15px;
+  background: #00409E !important;
+  color: white;
+}
+
+
+.app_ui_titlebar .app_ui_title,.app_ui_titlebar .app_ui_options{
+  float: left;
+  width: 50%;
+}
+
+.app_ui_titlebar .app_ui_options {
+  text-align: right;
+  padding-right: 10px;
+}
+.title-spacer {
+  flex: 1 1 auto;
+}

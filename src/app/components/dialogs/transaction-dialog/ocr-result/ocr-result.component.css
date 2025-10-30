@@ -1,0 +1,14 @@
+.ocr-result-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.ocr-result-image-item {
+  text-align: center;
+}
+
+.ocr-result-container {
+  margin-top: 50px;
+  padding-right: 20px;
+}
